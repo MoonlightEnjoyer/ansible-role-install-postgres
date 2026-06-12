@@ -11,6 +11,7 @@
   become: true
 - name: Initialize the database cluster
   ansible.builtin.command: /usr/pgsql-18/bin/postgresql-18-setup initdb
+  become: true
 - name: Enable and start postgresql service
   ansible.builtin.service:
     name: postgresql-18
