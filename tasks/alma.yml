@@ -1,3 +1,7 @@
+- name: Import the repository GPG key
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 - name: Install the repository RPM
   ansible.builtin.dnf:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
