@@ -2,12 +2,15 @@
   ansible.builtin.dnf:
     name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
     state: present
+  become: true
 - name: Install PostgreSQL
   ansible.builtin.dnf:
     name: postgresql18-server
     state: present
+  become: true
 - name: Enable and start postgresql service
   ansible.builtin.service:
     name: postgresql-18
     state: restarted
     enabled: true
+  become: true
