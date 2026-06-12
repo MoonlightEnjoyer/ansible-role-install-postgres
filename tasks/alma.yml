@@ -15,3 +15,5 @@
     state: restarted
     enabled: true
   become: true
+- name: Initialize the database cluster
+  ansible.builtin.command: /usr/pgsql-18/bin/postgresql-18-setup initdb
