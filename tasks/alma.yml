@@ -11,7 +11,7 @@
   become: true
 - name: Check if PostgreSQL database is initialized.
   stat:
-    path: "{{ postgresql_data_dir }}/PG_VERSION"
+    path: "/var/lib/pgsql/18/data"
   register: pgdata_dir_version
 - name: Initialize the database cluster
   ansible.builtin.command: /usr/pgsql-18/bin/postgresql-18-setup initdb
