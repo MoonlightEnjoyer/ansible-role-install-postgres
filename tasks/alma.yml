@@ -13,6 +13,7 @@
   stat:
     path: "/var/lib/pgsql/18/data"
   register: pgdata_dir_version
+  become: true
 - name: Initialize the database cluster
   ansible.builtin.command: /usr/pgsql-18/bin/postgresql-18-setup initdb
   become: true
