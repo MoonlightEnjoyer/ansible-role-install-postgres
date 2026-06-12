@@ -9,9 +9,14 @@
     name: postgresql18-server
     state: present
   become: true
+- name: Check if PostgreSQL database is initialized.
+  stat:
+    path: "{{ postgresql_data_dir }}/PG_VERSION"
+  register: pgdata_dir_version
 - name: Initialize the database cluster
   ansible.builtin.command: /usr/pgsql-18/bin/postgresql-18-setup initdb
   become: true
+  when: not pgdata_dir_version.stat.exists
 - name: Enable and start postgresql service
   ansible.builtin.service:
     name: postgresql-18
