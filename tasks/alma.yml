@@ -10,8 +10,8 @@
     state: present
   become: true
 - name: Check if PostgreSQL database is initialized.
-  stat:
-    path: "/var/lib/pgsql/18/data"
+  ansible.builtin.stat:
+    path: "/var/lib/pgsql/18/data/PG_VERSION"
   register: pgdata_dir_version
   become: true
 - name: Initialize the database cluster
